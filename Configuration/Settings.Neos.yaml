@@ -1,0 +1,11 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'Hb180.DXP.Unomi': TRUE
+
+  Flow:
+    mvc:
+      routes:
+        'Hb180.DXP.Unomi': TRUE
+

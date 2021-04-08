@@ -1,0 +1,12 @@
+#privilegeTargets:
+#  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+#    'Hb180.DXP.Unomi:UnomiController':
+#      matcher: 'method(Hb180\Unomi\Controller\UnomiController->(index)Action())'
+#
+#roles:
+#
+#  'Neos.Flow:Everybody':
+#    privileges:
+#      -
+#        privilegeTarget: 'Hb180.DXP.Unomi:UnomiController'
+#        permission: GRANT

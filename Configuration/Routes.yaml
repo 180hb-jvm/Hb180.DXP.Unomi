@@ -1,0 +1,8 @@
+#- name:  'Unomi route'
+#  uriPattern: 'dxp/unomi'
+#  defaults:
+#    '@package':    'Hb180.DXP.Unomi'
+#    '@controller': 'Unomi'
+#    '@action': 'index'
+#    '@format': 'json'
+#  httpMethods: ['POST']

@@ -1,0 +1,18 @@
+{
+    "description": "DXP Neos and Unomi connector",
+    "type": "neos-package",
+    "name": "hb180/dxp-unomi",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hb180\\DXP\\Unomi\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Hb180.DXP.Unomi"
+        }
+    }
+}
