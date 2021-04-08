@@ -1,0 +1,53 @@
+'Hb180.DXP.Unomi:Mixin.Properties':
+  abstract: true
+  ui:
+    label: 'Unomi'
+    icon: 'icon-gavel'
+    inspector:
+      tabs:
+        unomi:
+          label: 'Unomi'
+          icon: 'icon-gavel'
+          position: 'after seo'
+      groups:
+        info:
+          tab: 'unomi'
+          label: 'Info'
+          icon: 'icon-info'
+          position: 100
+        interests:
+          tab: 'unomi'
+          label: 'Interests'
+          icon: 'icon-eye'
+          position: 200
+  properties:
+    dxpUnomiTags:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Tags'
+        help:
+          message: 'Comma sepparated values like as value1, value2 ...'
+        inspector:
+          group: 'info'
+          position: 100
+    dxpUnomiCategories:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Categories'
+        help:
+          message: 'Comma sepparated values like as value1, value2 ...'
+        inspector:
+          group: 'info'
+          position: 200
+    dxpUnomiInterests:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Interests'
+        help:
+          message: 'Comma sepparated values like as key:value, key:value ...'
+        inspector:
+          group: 'interests'
+          position: 100
