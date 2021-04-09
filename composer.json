@@ -3,7 +3,9 @@
     "type": "neos-package",
     "name": "hb180/dxp-unomi",
     "require": {
-        "neos/flow": "*"
+        "neos/flow": "*",
+        "php-http/guzzle6-adapter": "*",
+        "dropsolid/unomi-sdk-php": "*"
     },
     "autoload": {
         "psr-4": {
