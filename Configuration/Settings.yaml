@@ -1,4 +1,9 @@
 Hb180:
   DXP:
     Unomi:
-      - true
+      client:
+        'timeout': '1.0'
+        'baseUri': 'http://172.18.0.8:8181/'
+        'auth':
+          user: 'karaf'
+          password: 'karaf'
