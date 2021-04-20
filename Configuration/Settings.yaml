@@ -3,7 +3,7 @@ Hb180:
     Unomi:
       client:
         'timeout': '1.0'
-        'baseUri': 'http://172.18.0.8:8181/'
+        'baseUri': ''
         'auth':
           user: 'karaf'
           password: 'karaf'
