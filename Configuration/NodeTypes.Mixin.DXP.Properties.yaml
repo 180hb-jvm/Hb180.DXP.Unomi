@@ -10,16 +10,21 @@
           icon: 'icon-gavel'
           position: 'after seo'
       groups:
-        info:
+        info-tags:
           tab: 'unomi'
-          label: 'Info'
+          label: 'Tags'
           icon: 'icon-info'
           position: 100
+        info-categories:
+          tab: 'unomi'
+          label: 'Categories'
+          icon: 'icon-info'
+          position: 200
         interests:
           tab: 'unomi'
           label: 'Interests'
           icon: 'icon-eye'
-          position: 200
+          position: 300
   properties:
     dxpUnomiTags:
       type: string
@@ -29,8 +34,20 @@
         help:
           message: 'Comma sepparated values like as value1, value2 ...'
         inspector:
-          group: 'info'
+          group: 'info-tags'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            placeholder: 'value1, value2, value3 ...'
+            rows: 7
           position: 100
+    dxpUnomiTagsDisallowParents:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Disallow parent values'
+        inspector:
+          group: 'info-tags'
+          position: 150
     dxpUnomiCategories:
       type: string
       defaultValue: ''
@@ -39,15 +56,39 @@
         help:
           message: 'Comma sepparated values like as value1, value2 ...'
         inspector:
-          group: 'info'
+          group: 'info-categories'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            placeholder: 'value1, value2, value3 ...'
+            rows: 7
           position: 200
+    dxpUnomiCategoriesDisallowParents:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Disallow parent values'
+        inspector:
+          group: 'info-categories'
+          position: 250
     dxpUnomiInterests:
       type: string
       defaultValue: ''
       ui:
         label: 'Interests'
         help:
-          message: 'Comma sepparated values like as key:value, key:value ...'
+          message: 'EOL sepparated values like as key:value key:value ...'
         inspector:
           group: 'interests'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            placeholder: 'key:value, key:value ...'
+            rows: 7
           position: 100
+    dxpUnomiInterestsDisallowParents:
+      type: boolean
+      defaultValue: FALSE
+      ui:
+        label: 'Disallow parent values'
+        inspector:
+          group: 'interests'
+          position: 200
