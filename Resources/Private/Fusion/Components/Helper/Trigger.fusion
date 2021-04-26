@@ -6,7 +6,7 @@ prototype(Hb180.DXP.Unomi:SmartContent.Helper.Trigger) < prototype(Neos.Fusion:L
 
         propsName = afx`<Hb180.DXP.Unomi:SmartContent.Helper.Uuid item={item} />`
 
-        renderer = ${'window.unomiTracker.personalize(' + props.propsName + ', function(x){console.log(x);document.getElementById(x[0]).style.display="block";})' }
+        renderer = ${'window.unomiTracker.personalize(' + props.propsName + ', function(x){console.log(x);document.getElementById(x[0]).style.display="block";});' }
 
     }
 
