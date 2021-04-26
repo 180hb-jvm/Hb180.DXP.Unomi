@@ -1,0 +1,5 @@
+prototype(Hb180.DXP.Unomi:SmartContent.Helper.Uuid) < prototype(Neos.Fusion:Component) {
+
+    renderer = ${'unomi' + String.replace( q(props.item).property('_identifier'), '-', '')}
+
+}

@@ -14,7 +14,7 @@ use Neos\Flow\Annotations as Flow;
       */
      public function getTags($node) : array
      {
-         return $this->get($node, 'dxpUnomiTags');
+         return array_filter($this->get($node, 'dxpUnomiTags'));
 
      }
 
@@ -24,7 +24,7 @@ use Neos\Flow\Annotations as Flow;
       */
      public function getCategories($node) : array
      {
-         return $this->get($node, 'dxpUnomiCategories');
+         return array_filter($this->get($node, 'dxpUnomiCategories'));
      }
 
      /**
@@ -41,7 +41,7 @@ use Neos\Flow\Annotations as Flow;
              $values[ current($interest) ] =  (int) end($interest);
          }
 
-         return $values;
+         return array_filter($values);
 
      }
 
@@ -85,6 +85,7 @@ use Neos\Flow\Annotations as Flow;
 
          };
 
+        //  var_dump($node->getProperty($property));
          $values = array_map( 'trim', array_merge( $values, explode($separator, $node->getProperty($property) ) ) );
 
          return $values;

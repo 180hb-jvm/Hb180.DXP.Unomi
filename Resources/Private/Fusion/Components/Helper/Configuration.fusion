@@ -1,0 +1,44 @@
+prototype(Hb180.DXP.Unomi:SmartContent.Helper.Configuration) < prototype(Neos.Fusion:Component) {
+
+    propsName = afx`<Hb180.DXP.Unomi:SmartContent.Helper.Uuid item={node} />`
+
+    renderer = Neos.Fusion:Component {
+
+        @apply.props = ${props}
+
+        json = Neos.Fusion:DataStructure {
+
+            id = ${props.propsName}
+
+            strategy = ${q(node).property('strategy')}
+
+            strategyOptions = Neos.Fusion:DataStructure {
+                fallback = Neos.Fusion:Value {
+                    value = ${q(node).property('strategyOptions')}
+                    value.@process.detectFallback = ${(Neos.Link.getScheme(value) =='node')?String.replace(value, 'node://', ''):value}
+                }
+            }
+
+            contents = Neos.Fusion:Map {
+                items = ${q(node).find('[instanceof Hb180.DXP.Unomi:SmartContentVariant]').get()}
+                @glue = ','
+                itemRenderer = Neos.Fusion:DataStructure {
+                    id = ${q(item).property('_identifier')}
+                    filters = Neos.Fusion:DataStructure {
+                        0 = Neos.Fusion:DataStructure {
+                            condition = ${Unomi.Yaml.parse(q(item).property('variantCondition'), true)}
+                        }
+                    }
+                    filters.@if.hasCondition = ${Unomi.Yaml.parse(q(item).property('variantCondition'), true)}
+                }
+            }
+
+            @process.stringify = ${Json.stringify(value)}
+
+        }
+
+        renderer = ${'<script> var ' + props.propsName + '=' + props.json + '</script>'}
+
+    }
+
+}

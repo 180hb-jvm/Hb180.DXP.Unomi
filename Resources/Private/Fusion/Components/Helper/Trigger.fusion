@@ -1,0 +1,13 @@
+prototype(Hb180.DXP.Unomi:SmartContent.Helper.Trigger) < prototype(Neos.Fusion:Loop) {
+
+    items = ${q(node).find('[instanceof Hb180.DXP.Unomi:SmartContent]').get()}
+
+    itemRenderer = Neos.Fusion:Component {
+
+        propsName = afx`<Hb180.DXP.Unomi:SmartContent.Helper.Uuid item={item} />`
+
+        renderer = ${'window.unomiTracker.personalize(' + props.propsName + ', function(x){console.log(x);document.getElementById(x[0]).style.display="block";})' }
+
+    }
+
+}

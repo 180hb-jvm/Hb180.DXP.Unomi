@@ -6,6 +6,7 @@ Neos:
   Fusion:
     defaultContext:
       Unomi.TrackingValues: Hb180\DXP\Unomi\Eel\Helper\TrackingValuesHelper
+      Unomi.Yaml: Hb180\DXP\Unomi\Eel\Helper\YamlHelper
   Flow:
     mvc:
       routes:

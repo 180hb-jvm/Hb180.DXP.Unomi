@@ -1,0 +1,9 @@
+prototype(Hb180.DXP.Unomi:SmartContentVariant) < prototype(Neos.Neos:ContentComponent) {
+
+    renderer = afx`
+        <div class="smart-content-variant" id={node.identifier} style={node.context.inBackend ? 'display:block;':'display:none;'}>
+            <Neos.Neos:ContentCollectionRenderer />
+        </div>
+    `
+
+}

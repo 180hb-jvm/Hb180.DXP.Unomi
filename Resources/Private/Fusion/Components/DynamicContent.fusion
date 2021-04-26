@@ -1,0 +1,7 @@
+prototype(Hb180.DXP.Unomi:DynamicContent) < prototype(Neos.Neos:ContentComponent) {
+    renderer = afx`
+        <div class="dynamic-content" id={node.identifier} style={node.context.inBackend ? 'display:block;':'display:none;'}>
+            <Neos.Neos:ContentCollectionRenderer />
+        </div>
+        `
+}

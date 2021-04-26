@@ -1,0 +1,59 @@
+
+prototype(Hb180.DXP.Unomi:UnomiTracker) < prototype(Neos.Fusion:Tag){
+    @if.notInBackend = ${documentNode.context.inBackend?FALSE:TRUE}
+    tagName = 'script'
+
+    @context.documentNodeLang = ${documentNode.context.dimensions.language[0]}
+    @context.documentNode = ${documentNode}
+    
+    content = Neos.Fusion:Renderer{
+   
+        tracingOptions = Neos.Fusion:DataStructure {
+            scope = ${q(q(site).get(0)).property('_name')}
+            # URL should be read from config
+            url = "http://localhost:8181"
+
+            initialPageProperties = Neos.Fusion:DataStructure{
+            
+                pageLanguage = ${documentNodeLang}
+
+                interests = ${Unomi.TrackingValues.getIntrests(documentNode)}
+
+                pageInfo = Neos.Fusion:DataStructure {
+                    pageID = ${q(documentNode).property('_identifier')}
+                    tags = ${Unomi.TrackingValues.getTags(documentNode)}
+                    // tags.@if.hasTags = ${Unomi.TrackingValues.getTags(documentNode)}
+
+                    categories = ${Unomi.TrackingValues.getCategories(documentNode)}
+                    attributes = Neos.Fusion:DataStructure {
+                        additional = Neos.Fusion:DataStructure {
+                            data = "value1"
+                        }
+                    }
+                    custom1 = "value1"
+                }
+                // tutaj categories i attribures/custom chyba nie dzialaja
+                categories = ${Unomi.TrackingValues.getCategories(documentNode)}
+
+                attributes = Neos.Fusion:DataStructure {
+                    test = "val"
+                    // additional = Neos.Fusion:DataStructure {
+                    //     data = "value2"
+                    // }
+                }
+                custom2 = "value2"
+            }
+        }
+        renderer =${'var unomiOption = ' + Json.stringify(this.tracingOptions) + '; window.unomiTracker||(window.unomiTracker={}),function(){function e(e){for(unomiTracker.initialize({"Apache Unomi":unomiOption});n.length>0;){var r=n.shift(),t=r.shift();unomiTracker[t]&&unomiTracker[t].apply(unomiTracker,r)}}for(var n=[],r=["trackSubmit","trackClick","trackLink","trackForm","initialize","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","personalize"],t=0;t<r.length;t++){var i=r[t];window.unomiTracker[i]=function(e){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(e),n.push(r),window.unomiTracker}}(i)}unomiTracker.load=function(){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=unomiOption.url+"/tracker/unomi-tracker.min.js",n.addEventListener?n.addEventListener("load",function(n){"function"==typeof e&&e(n)},!1):n.onreadystatechange=function(){"complete"!==this.readyState&&"loaded"!==this.readyState||e(window.event)};var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(n,r)},document.addEventListener("DOMContentLoaded",unomiTracker.load),unomiTracker.page()}();'}
+
+        // renderer.@process.trackPage = ${ value + 'window.unomiTracker.page('+Json.stringify(this.dataLayer)+');' }
+
+        renderer.@process.allSmartConditions = afx`{value} <Hb180.DXP.Unomi:SmartContent.Helper.Trigger />`
+
+    }
+}
+
+prototype(Neos.Neos:Page) {
+    unomiTracker = Hb180.DXP.Unomi:UnomiTracker
+    unomiTracker.@position = 'end'
+}

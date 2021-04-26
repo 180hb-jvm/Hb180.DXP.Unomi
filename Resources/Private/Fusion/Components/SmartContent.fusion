@@ -1,0 +1,10 @@
+prototype(Hb180.DXP.Unomi:SmartContent) < prototype(Neos.Neos:ContentComponent) {
+
+    renderer = afx`
+        <div class="smart-content" id={node.identifier}>
+            <Neos.Neos:ContentCollectionRenderer />
+            <Hb180.DXP.Unomi:SmartContent.Helper.Configuration />
+        </div>
+    `
+
+}

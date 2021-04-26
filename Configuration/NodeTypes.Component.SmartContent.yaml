@@ -1,0 +1,57 @@
+Hb180.DXP.Unomi:SmartContent:
+  superTypes:
+    Neos.Neos:Content: TRUE
+    Neos.Neos:ContentCollection: TRUE
+  ui:
+    label: 'Smart content'
+    icon: 'icon-brain'
+    group: structure
+    inspector:
+      tabs:
+        unomi:
+          label: 'Unomi'
+          icon: 'icon-gavel'
+          position: 'after seo'
+      groups:
+        condition:
+          tab: 'unomi'
+          label: 'Variant condition'
+          icon: 'icon-filter'
+          position: 100
+        props:
+          tab: 'unomi'
+          label: 'Variant settings'
+          icon: 'icon-cogs'
+          position: 100
+  constraints:
+    nodeTypes:
+      '*': false
+      Hb180.DXP.Unomi:SmartContentVariant: true
+  properties:
+    strategy:
+      type: 'string'
+      defaultValue: 'matching-first'
+      ui:
+        label: 'Strategy'
+        inspector:
+          group: 'condition'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              matching-first:
+                label: 'Matching first'
+              random:
+                label: 'Random'
+              score-sorted:
+                label: 'Score sorted'
+    strategyOptions:
+      type: string
+      ui:
+        label: 'Fallback'
+        inspector:
+          group: 'condition'
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
+          editorOptions:
+            assets: FALSE
+            nodeTypes: ['Hb180.DXP.Unomi:SmartContentVariant']
+            placeholder: 'Provide fallback'

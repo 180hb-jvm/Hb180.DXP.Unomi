@@ -1,0 +1,59 @@
+Hb180.DXP.Unomi:SmartContentVariant:
+  label: '${ ((node.properties.title) ? (node.properties.title + " - ") : "") + I18n.translate(node.nodeType.label) }'
+  superTypes:
+    Neos.Neos:Content: TRUE
+    Neos.Neos:ContentCollection: TRUE
+  ui:
+    label: 'Smart content variant'
+    # stworzyc nowa grupe Experience
+    group: structure
+    icon: 'icon-filter'
+    inspector:
+      tabs:
+        unomi:
+          label: 'Unomi'
+          icon: 'icon-gavel'
+          position: 'after seo'
+      groups:
+        condition:
+          tab: 'unomi'
+          label: 'Variant condition'
+          icon: 'icon-filter'
+          position: 100
+        props:
+          tab: 'unomi'
+          label: 'Variant settings'
+          icon: 'icon-cogs'
+          position: 100
+  constraints:
+    nodeTypes:
+      Hb180.DXP.Unomi:SmartContent: false
+      Hb180.DXP.Unomi:SmartContentVariant: false
+  properties:
+    title:
+      type: 'string'
+      defaultValue: 'Variant Name'
+      ui:
+        label: 'Name'
+        inspector:
+          group: 'condition'
+    variantCondition:
+      type: 'string'
+      ui:
+        label: 'Custom Condition YAML'
+        inspector:
+          group: 'condition'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Edit condition'
+            highlightingMode: 'text/javascript'
+    variantProperties:
+      type: 'string'
+      ui:
+        label: 'Properties YAML'
+        inspector:
+          group: 'props'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Edit properties'
+            highlightingMode: 'text/javascript'
