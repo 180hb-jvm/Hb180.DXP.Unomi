@@ -1,9 +1,14 @@
 prototype(Hb180.DXP.Unomi:SmartContent) < prototype(Neos.Neos:ContentComponent) {
 
+    title = ${q(node).property('title')}
+    strategy = ${q(node).property('strategy')}
+
     renderer = afx`
         <div class="smart-content" id={node.identifier}>
+            <h5 @if.isBackend={node.context.inBackend} title={props.condition} style="background:#333;color:#fff;margin:0;padding:5px;">🧠 <b>Smart Content:</b> {props.title} <i>({props.strategy})</i></h5>
             <Neos.Neos:ContentCollectionRenderer />
             <Hb180.DXP.Unomi:SmartContent.Helper.Configuration />
+            <h5 @if.isBackend={node.context.inBackend} title={props.condition} style="background:#333;color:#fff;margin:0 0 1 0;padding:5px;"><b>END Smart Content:</b> {props.title}</h5>
         </div>
     `
 

@@ -1,7 +1,11 @@
 prototype(Hb180.DXP.Unomi:SmartContentVariant) < prototype(Neos.Neos:ContentComponent) {
 
+    title = ${q(node).property('title')}
+    condition = ${q(node).property('variantCondition')}
+
     renderer = afx`
         <div class="smart-content-variant" id={node.identifier} style={node.context.inBackend ? 'display:block;':'display:none;'}>
+             <h6 @if.isBackend={node.context.inBackend} title={props.condition} style="background:#999;margin:0;border-left:5px solid #333;padding:3px;">🧪 <b>Variant:</b> {props.title}</h6>
             <Neos.Neos:ContentCollectionRenderer />
         </div>
     `
