@@ -7,18 +7,18 @@
       tabs:
         unomi:
           label: 'Unomi'
-          icon: 'icon-gavel'
+          icon: 'icon-street-view'
           position: 'after seo'
       groups:
         info-tags:
           tab: 'unomi'
           label: 'Tags'
-          icon: 'icon-info'
+          icon: 'icon-tags'
           position: 100
         info-categories:
           tab: 'unomi'
           label: 'Categories'
-          icon: 'icon-info'
+          icon: 'icon-layer-group'
           position: 200
         interests:
           tab: 'unomi'

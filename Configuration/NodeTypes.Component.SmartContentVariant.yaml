@@ -12,7 +12,7 @@ Hb180.DXP.Unomi:SmartContentVariant:
       tabs:
         unomi:
           label: 'Unomi'
-          icon: 'icon-gavel'
+          icon: 'icon-street-view'
           position: 'after seo'
       groups:
         condition:

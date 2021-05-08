@@ -10,7 +10,7 @@ Hb180.DXP.Unomi:SmartContent:
       tabs:
         unomi:
           label: 'Unomi'
-          icon: 'icon-gavel'
+          icon: 'icon-street-view'
           position: 'after seo'
       groups:
         condition:
@@ -28,6 +28,13 @@ Hb180.DXP.Unomi:SmartContent:
       '*': false
       Hb180.DXP.Unomi:SmartContentVariant: true
   properties:
+    title:
+      type: 'string'
+      defaultValue: 'Experiment Name'
+      ui:
+        label: 'Experiment Name'
+        inspector:
+          group: 'condition'
     strategy:
       type: 'string'
       defaultValue: 'matching-first'

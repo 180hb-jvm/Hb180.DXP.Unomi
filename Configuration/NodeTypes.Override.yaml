@@ -1,0 +1,4 @@
+Neos.Neos:ContentCollection:
+  constraints:
+    nodeTypes:
+      Hb180.DXP.Unomi:SmartContentVariant: false
