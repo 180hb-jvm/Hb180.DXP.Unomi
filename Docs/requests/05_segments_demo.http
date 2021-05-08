@@ -1,0 +1,195 @@
+### custom rule
+POST http://localhost:8181/cxs/segments
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "condition": {
+        "parameterValues": {
+            "subConditions": [
+                {
+                    "parameterValues": {
+                        "propertyName": "properties.interests.wonderland",
+                        "comparisonOperator": "greaterThanOrEqualTo",
+                        "propertyValueInteger": 13
+                    },
+                    "type": "profilePropertyCondition"
+                }
+            ],
+            "operator": "and"
+        },
+        "type": "booleanCondition"
+    },
+    "metadata": {
+        "id": "wonderland_fan",
+        "name": "Wonderland Fan",
+        "description": "Users who has read all chapters",
+        "scope": "neosdemo",
+        "tags": ["book","wonderland"],
+        "enabled": true,
+        "missingPlugins": false,
+        "hidden": false,
+        "readOnly": false
+    }
+}
+
+### memberarea
+POST http://localhost:8181/cxs/segments
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "condition":
+    {
+        "type": "booleanCondition",
+        "parameterValues": {
+            "operator" : "and",
+            "subConditions": [
+                {
+                    "type": "pastEventCondition",
+                    "parameterValues": {
+                        "numberOfDays": 5,
+                        "minimumEventCount": 2,
+                        "eventCondition": {
+                            "type": "booleanCondition",
+                            "parameterValues": {
+                                "subConditions": [
+                                    {
+                                        "type": "eventTypeCondition",
+                                        "parameterValues": {
+                                            "eventTypeId": "view"
+                                        }
+                                    },
+                                    {
+                                        "type": "eventPropertyCondition",
+                                        "parameterValues": {
+                                            "propertyName": "target.itemId",
+                                            "propertyValue": "fee74676-c42f-89da-208e-1741a66525d4",
+                                            "comparisonOperator": "equals"
+                                        }
+                                    }
+                                ],
+                                "operator": "and"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+
+    ,
+    "metadata": {
+        "id": "memberarea",
+        "name": "Memberarea",
+        "description": "Users who has logged in",
+        "scope": "neosdemo",
+        "tags": [],
+        "enabled": true,
+        "missingPlugins": false,
+        "hidden": false,
+        "readOnly": false
+    }
+}
+
+### custom rule
+POST http://localhost:8181/cxs/segments
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "metadata": {
+        "id": "leads",
+        "name": "Leads",
+        "scope": "systemscope",
+        "description": "You can customize the list below by editing the leads segment.",
+        "readOnly":true
+    },
+    "condition": {
+        "type": "booleanCondition",
+        "parameterValues": {
+            "operator" : "and",
+            "subConditions": [
+                {
+                    "type": "profilePropertyCondition",
+                    "parameterValues": {
+                        "propertyName": "properties.leadAssignedTo",
+                        "comparisonOperator": "exists"
+                    }
+                }
+            ]
+        }
+    }
+}
+
+### custom rule
+POST http://localhost:8181/cxs/segments
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "condition": {
+        "parameterValues": {
+            "subConditions": [
+                {
+                    "parameterValues": {
+                        "propertyName": "properties.interests.wonderland",
+                        "comparisonOperator": "greaterThanOrEqualTo",
+                        "propertyValueInteger": 13
+                    },
+                    "type": "profilePropertyCondition"
+                }
+            ],
+            "operator": "and"
+        },
+        "type": "booleanCondition"
+    },
+    "metadata": {
+        "id": "wonderland_fan",
+        "name": "Wonderland Fan",
+        "description": "Users who has read all chapters",
+        "scope": "neosdemo",
+        "tags": ["book","wonderland"],
+        "enabled": true,
+        "missingPlugins": false,
+        "hidden": false,
+        "readOnly": false
+    }
+}
+
+### search heavy user
+POST http://localhost:8181/cxs/segments
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "metadata": {
+        "id": "guideSearchSegment",
+        "name": "Guide Search Segment",
+        "scope": "rekaWebsite",
+        "description": "At least 5 guideEvents in last 10 days.",
+        "readOnly":true
+    },
+    "condition": {
+        "type": "booleanCondition",
+        "parameterValues": {
+            "operator" : "and",
+            "subConditions": [
+
+                {
+                    "type": "pastEventCondition",
+                    "parameterValues": {
+                        "numberOfDays": 5,
+                        "minimumEventCount": 5,
+                        "eventCondition": {
+                            "type": "eventTypeCondition",
+                            "parameterValues": {
+                                "eventTypeId": "guideSearch"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

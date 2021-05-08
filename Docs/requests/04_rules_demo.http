@@ -1,0 +1,43 @@
+### custom rule
+POST http://localhost:8181/cxs/rules
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "metadata": {
+        "id": "_ynqbd6g4t_incrementInterests",
+        "name": "Increment profile interests",
+        "description": "Evaluate segments when a profile is modified"
+    },
+    "raiseEventOnlyOnceForSession": true,
+    "condition": {
+        "parameterValues": {
+            "subConditions": [
+                {
+                    "type": "pageViewEventCondition",
+                    "parameterValues": {
+                    }
+                },
+                {
+                    "type": "eventPropertyCondition",
+                    "parameterValues": {
+                        "propertyName": "target.properties.interests",
+                        "comparisonOperator": "exists"
+                    }
+                }
+            ],
+            "operator": "and"
+        },
+        "type": "booleanCondition"
+    },
+    "actions": [
+        {
+            "parameterValues": {
+                "setPropertyName": "properties.interests",
+                "setPropertyValue": "script::r = profile.properties['interests']; foreach(interest : event.target.properties['interests'].entrySet()) { if (r == null) { r = [interest.key: interest.value] } else if (r[interest.key] != null) { r[interest.key] = r[interest.key] + interest.value } else { r[interest.key] = interest.value } } r",
+                "storeInSession": false
+            },
+            "type": "setPropertyAction"
+        }
+    ]
+}

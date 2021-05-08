@@ -1,0 +1,72 @@
+### get goals
+GET http://localhost:8181/cxs/goals
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+### init guide visit goal
+POST http://localhost:8181/cxs/goals
+Authorization: Basic karaf karaf
+Content-Type: application/json
+
+{
+    "itemId": "readAllChaptersGoal",
+    "itemType": "goal",
+    "startEvent": {
+        "type": "booleanCondition",
+        "parameterValues": {
+            "subConditions": [
+                {
+                    "type": "eventTypeCondition",
+                    "parameterValues": {
+                        "eventTypeId": "view"
+                    }
+                },
+                {
+                    "type": "eventPropertyCondition",
+                    "parameterValues": {
+                        "propertyName": "target.properties.pageInfo.pageID",
+                        "propertyValue": "1ce0d7b3-250c-5254-a94e-cbcaca5534eb",
+                        "comparisonOperator": "equals"
+                    }
+                }
+            ],
+            "operator": "and"
+        }
+    },
+    "targetEvent": {
+        "type": "booleanCondition",
+        "parameterValues": {
+            "subConditions": [
+                {
+                    "type": "eventTypeCondition",
+                    "parameterValues": {
+                        "eventTypeId": "view"
+                    }
+                },
+                {
+                    "type": "eventPropertyCondition",
+                    "parameterValues": {
+                        "propertyName": "target.properties.pageInfo.pageID",
+                        "propertyValue": "f1fbb253-1851-805a-c2fa-f4692458faeb",
+                        "comparisonOperator": "equals"
+                    }
+                }
+            ],
+            "operator": "and"
+        }
+    },
+    "metadata": {
+        "id": "readAllChaptersGoal",
+        "name": "User has visited all chapters (cheated)",
+        "description": null,
+        "scope": "neosdemo",
+        "enabled": true,
+        "missingPlugins": false,
+        "hidden": false,
+        "readOnly": false,
+        "systemTags": [
+            "goal",
+            "neosdemo"
+        ]
+    }
+}
